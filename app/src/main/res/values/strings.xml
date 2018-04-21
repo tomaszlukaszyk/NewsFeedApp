@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">News Feed App</string>
+    <string name="no_data_available">\"No news found\"</string>
+    <string name="no_network">No network connection.</string>
+</resources>

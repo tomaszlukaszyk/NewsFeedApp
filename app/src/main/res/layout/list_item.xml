@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/standard_padding"
+    android:paddingRight="@dimen/standard_padding">
+
+    <TextView
+        android:id="@+id/article_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textColorArticleDetails"
+        android:textSize="@dimen/text_small"
+        tools:text="Science   2018-04-21   Tim Adams" />
+
+    <TextView
+        android:id="@+id/article_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/textColorArticleTitle"
+        android:textSize="@dimen/text_large"
+        tools:text="Neurosurgeon Eric Leuthardt: ‘An interface between mind and machine will happen’" />
+
+</LinearLayout>
