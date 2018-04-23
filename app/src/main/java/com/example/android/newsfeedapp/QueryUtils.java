@@ -24,7 +24,7 @@ public final class QueryUtils {
     /**
      * Tag for the log messages
      */
-    public static final String LOG_TAG = QueryUtils.class.getSimpleName();
+    private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
 
     /**
@@ -130,7 +130,7 @@ public final class QueryUtils {
      * Return a list of {@link NewsArticle} objects that has been built up from
      * parsing a JSON response.
      */
-    public static ArrayList<NewsArticle> extractNewsArticles(String jsonResponse) {
+    private static ArrayList<NewsArticle> extractNewsArticles(String jsonResponse) {
 
         // Create an empty ArrayList that we can start adding news articles to
         ArrayList<NewsArticle> articles = new ArrayList<>();
@@ -149,8 +149,13 @@ public final class QueryUtils {
                 String date = article.getString("webPublicationDate");
                 String title = article.getString("webTitle");
                 String url = article.getString("webUrl");
-                JSONObject fields = article.getJSONObject("fields");
-                String author = fields.getString("byline");
+                String author;
+                if (article.isNull("fields")) {
+                    author = "";
+                } else {
+                    JSONObject fields = article.getJSONObject("fields");
+                    author = fields.getString("byline");
+                }
                 articles.add(new NewsArticle(section, date, title, url, author));
             }
 
