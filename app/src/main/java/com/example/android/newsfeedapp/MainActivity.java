@@ -22,6 +22,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<NewsArticle>> {
 
     // Constant value for the article loader ID.
@@ -36,27 +39,23 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private ListAdapter adapter;
 
     // RecyclerView in the layout
-    private RecyclerView recyclerView;
+    @BindView(R.id.recycler_view) RecyclerView recyclerView;
 
     // Progress bar
-    private ProgressBar progressBar;
+    @BindView(R.id.progress_bar) ProgressBar progressBar;
 
     // TextView that shows when RecyclerView is empty
-    private TextView emptyView;
+    @BindView(R.id.empty_view) TextView emptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Find the progress bar
-        progressBar = findViewById(R.id.progress_bar);
+        // Bind the view using butterknife
+        ButterKnife.bind(this);
 
-        // Find the TextView that shows when RecyclerView is empty
-        emptyView = findViewById(R.id.empty_view);
-
-        // Find the RecyclerView in the layout
-        recyclerView = findViewById(R.id.recycler_view);
+        // Set fixed size
         recyclerView.setHasFixedSize(true);
 
         // Use a linear layout manager

@@ -15,6 +15,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     // List of all articles to display
@@ -23,13 +26,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     // Provides a reference to the views for each data item
     static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView articleDetails;
-        private final TextView articleTitle;
+        @BindView(R.id.article_details) TextView articleDetails;
+        @BindView(R.id.article_title) TextView articleTitle;
 
         ViewHolder(View itemView) {
             super(itemView);
-            articleDetails = itemView.findViewById(R.id.article_details);
-            articleTitle = itemView.findViewById(R.id.article_title);
+
+            // Bind the view using butterknife
+            ButterKnife.bind(this, itemView);
         }
     }
 
